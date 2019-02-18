@@ -27,6 +27,24 @@ router.get('/gareth', (req, res) => {
   })
 })
 
+// if you have a fully RESTFUL API you could also use the 'route' method
+// as a short hand here at it is always the same routes when talking about
+// these sort of resources
+router
+  .route('/item')
+  .get((req, res) => {
+    res.send({
+      message: 'woop'
+    })
+  })
+  .post()
+
+router
+  .route('/item/:id')
+  .put()
+  .get()
+  .delete()
+
 // but to use it we need to register it via middleware
 // in this case anything under /api will use our new route 🎉
 app.use('/api', router)
