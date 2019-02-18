@@ -18,6 +18,19 @@ app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
+const router = express.Router()
+
+// can make a route
+router.get('/gareth', (req, res) => {
+  res.send({
+    message: 'rocks'
+  })
+})
+
+// but to use it we need to register it via middleware
+// in this case anything under /api will use our new route 🎉
+app.use('/api', router)
+
 // this would have it run for the entire app
 // app.use(log)
 
